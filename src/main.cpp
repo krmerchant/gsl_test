@@ -38,8 +38,8 @@ int main(void)
 
   /* Starting point */
   x = gsl_vector_alloc (2);
-  gsl_vector_set (x, 0, 5.0);
-  gsl_vector_set (x, 1, 7.0);
+  gsl_vector_set (x, 0, 3.0);
+  gsl_vector_set (x, 1, 0.0);
 
   /* Set initial step sizes to 1 */
   ss = gsl_vector_alloc (2);
@@ -62,7 +62,7 @@ int main(void)
         break;
 
       size = gsl_multimin_fminimizer_size (s);
-      status = gsl_multimin_test_size (size, 1e-2);
+      status = gsl_multimin_test_size (size, 1e-5);
 
       if (status == GSL_SUCCESS)
         {
