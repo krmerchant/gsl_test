@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/komelmerchant/Projects/gsl_test/src/main.cpp
+gsl/gsl_multimin.h
+-
+iostream
+-
+math.h
+-
+
