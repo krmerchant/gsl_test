@@ -10,11 +10,9 @@ struct Line
    * @brief simple stupid datastruct:  "y=mx+b"
    * 
    */
-  Line(double _m, double _b): m_(_m),b_(_b){}
-
-  private:
-    double m_;  
-    double b_;
+  Line(double _m, double _b): m(_m),b(_b){}
+  double m;  
+  double b;
 };
 
 /**
@@ -27,8 +25,6 @@ class LineFit
 {
   public:
     LineFit(){};
-
-  protected:
     virtual Line ComputeLine(std::vector<double> _x, std::vector<double> _y) = 0;
 
 };
