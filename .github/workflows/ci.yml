@@ -1,13 +1,31 @@
-  stages:
-  - build
-  - test
+name: C++ CI
 
-job_build:
-  stage: build
-  script:
-    - echo "Building the project"
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
-job_test:
-  stage: test
-  script:
-    - echo "Running tests"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y build-essential cmake
+
+      - name: Configure CMake
+        run: cmake -S . -B build
+
+      - name: Build project
+        run: cmake --build build --config Release
+
+      - name: Run tests (if applicable)
+        working-directory: build
+        run: ctest --output-on-failure
+
