@@ -4,7 +4,13 @@ project(test_gsl)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "-std=c++17")
 
-add_executable(test_gsl src/main.cpp)
+#include_directories(${gtest_SOURCE_DIR}/include ${gmock_SOURCE_DIR}/include)
+
+add_subdirectory(googletest)
+
+add_executable(test_gsl src/test_line_fit.cc )
 find_package(GSL REQUIRED)
+find_package(GTest REQUIRED)
 include_directories(${GSL_INCLUDE_DIR})
-target_link_libraries(test_gsl gsl )
+include_directories(${GTEST_INCLUDE_DIR})
+target_link_libraries(test_gsl gsl gmock_main gmock gtest_main gtest pthread )
