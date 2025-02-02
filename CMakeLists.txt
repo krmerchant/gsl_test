@@ -11,7 +11,7 @@ add_subdirectory(googletest)
 
 add_executable(test_gsl src/test_line_fit.cc )
 find_package(GSL REQUIRED)
-find_package(GTest REQUIRED)
 include_directories(${GSL_INCLUDE_DIR})
 include_directories(${GTEST_INCLUDE_DIR})
 target_link_libraries(test_gsl gsl gmock_main gmock gtest_main gtest pthread )
+
