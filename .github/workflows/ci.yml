@@ -29,3 +29,8 @@ jobs:
         working-directory: build
         run: ctest --output-on-failure
 
+  generate_report:
+    runs-on: ubuntu-latest
+    needs: build 
+    run: |
+      ./build/line_eval

@@ -60,9 +60,7 @@ TEST(LineTest, SimpleLineNMTest)
 {
   auto [x,y] = GetSimpleLine();
   std::unique_ptr<LineFit> lineFitter_ = Create(typeid(NelderMeadLineFit));
-
   auto line = lineFitter_->ComputeLine(x,y);
-
   ASSERT_TRUE(IsNear(line.m,1,0.01));
 
 }
