@@ -35,6 +35,10 @@ jobs:
    
     steps:
 
+     - name: Build project
+        run: cmake --build build --config Release
+
+
       - name: Run Evaluation
         working-directory: build
         run: ./line_eval
