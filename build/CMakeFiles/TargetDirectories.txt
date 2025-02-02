@@ -1,3 +1,0 @@
-/home/komelmerchant/Projects/gsl_test/build/CMakeFiles/rebuild_cache.dir
-/home/komelmerchant/Projects/gsl_test/build/CMakeFiles/edit_cache.dir
-/home/komelmerchant/Projects/gsl_test/build/CMakeFiles/test_gsl.dir
