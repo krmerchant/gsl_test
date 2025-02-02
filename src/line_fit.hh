@@ -25,9 +25,11 @@ struct Line
  */
 class LineFit
 {
+  public:
+    LineFit(){};
 
-
-  virtual Line ComputeLine(std::vector<double> _x, std::vector<double> _y) = 0;
+  protected:
+    virtual Line ComputeLine(std::vector<double> _x, std::vector<double> _y) = 0;
 
 };
 
@@ -35,6 +37,9 @@ class LineFit
 class NelderMeadLineFit : public LineFit
 {
 
+
+  public: 
+   NelderMeadLineFit(){};
    Line ComputeLine(std::vector<double> _x, std::vector<double> _y)
    {
     return Line(0,0);

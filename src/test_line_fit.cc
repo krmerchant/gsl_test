@@ -6,7 +6,7 @@
 #include <unordered_map>
 #include <functional>
 
-std::unique_ptr<LineFit> Create(std::type_info _type)
+std::unique_ptr<LineFit> Create(const std::type_info& _type)
 {
  
   if(_type == typeid(NelderMeadLineFit))
@@ -18,12 +18,7 @@ std::unique_ptr<LineFit> Create(std::type_info _type)
     return nullptr;
   }
  
-   //std::unordered_map<std::type_index, std::function<std::unique_ptr<LineFit>>> factoryMap;
-   //factoryMap.emplace(std::type_index(typeid(NelderMeadLineFit)), []() {});
 
-
-   //auto it = factoryMap.find(std::type_index(typeid(_type)));
-   //return it->second();
 }
 
 
@@ -33,5 +28,12 @@ class LineTest : public testing::Test
   public:
     std::unique_ptr<LineFit> lineFitter_;
 
-
 };
+
+
+TEST(LineTest, InitNMTest)
+{
+
+    std::unique_ptr<LineFit> lineFitter_ = Create(typeid(NelderMeadLineFit));
+
+}
