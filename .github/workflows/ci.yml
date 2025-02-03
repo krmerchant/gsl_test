@@ -56,7 +56,7 @@ jobs:
         run: ./line_eval
       
       - name: Upload Output Log
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-         name: metrics-log
-         path: output.txt 
+          name: metrics-log
+          path: output.txt 
