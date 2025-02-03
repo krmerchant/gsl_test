@@ -35,7 +35,7 @@ jobs:
 
       - name: Check if CSV Exists
         working-directory: build
-        run: chmod +r ./line_eval  
+        run: chmod +x ./line_eval  
 
       - name: Run tests (if applicable)
         working-directory: build
