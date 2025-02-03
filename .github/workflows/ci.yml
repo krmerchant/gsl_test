@@ -36,7 +36,7 @@ jobs:
 
       - name: Run tests (if applicable)
         working-directory: build
-        run: ./line_eval 
+        run: ./test_gsl 
 
   generate_report:
     runs-on: ubuntu-latest
