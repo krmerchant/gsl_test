@@ -35,11 +35,11 @@ jobs:
 
       - name: Check if CSV Exists
         working-directory: build
-        run: ls -lah
+        run: chmod +r ./line_eval  
 
       - name: Run tests (if applicable)
         working-directory: build
-        run: ./test_gsl 
+        run: ./line_eval 
 
   generate_report:
     runs-on: ubuntu-latest
