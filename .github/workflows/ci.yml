@@ -25,7 +25,6 @@ jobs:
       - name: Build project
         run: cmake --build build --config Release
 
-
       - name: Cache Build Artifacts
         uses: actions/cache@v3
         with:
