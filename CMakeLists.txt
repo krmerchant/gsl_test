@@ -4,7 +4,10 @@ project(test_gsl)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "-std=c++17")
 
-#include_directories(${gtest_SOURCE_DIR}/include ${gmock_SOURCE_DIR}/include)
+# Copy train.csv to the build directory
+configure_file(${CMAKE_SOURCE_DIR}/data/train.csv ${CMAKE_BINARY_DIR}/train.csv COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/data/test.csv ${CMAKE_BINARY_DIR}/test.csv COPYONLY)
+
 
 # hate to have to add this
 add_subdirectory(googletest)
