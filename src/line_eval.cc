@@ -61,7 +61,6 @@ void PrintFormattedOutput(double real_m, double real_b, double pred_m, double pr
 
 int main(char* argv[], int argc) {
     Data trainingData  = ReadCSV("train.csv");
-    Data testData  = ReadCSV("test.csv");
     std::unique_ptr<LineFit> fit = std::make_unique<NelderMeadLineFit>();
     auto& [x,y] = trainingData;
 
@@ -72,7 +71,7 @@ int main(char* argv[], int argc) {
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed_seconds = end-start;
 
-    double metric =  ComputeLineResidual(line, testData);
+    double metric =  ComputeLineResidual(line, trainingData);
     PrintFormattedOutput(3, 2, line.m, line.b, metric, elapsed_seconds.count(), "output.txt");
 
 
