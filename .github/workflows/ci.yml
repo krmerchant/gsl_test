@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - master 
-
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,8 +33,8 @@ jobs:
           restore-keys: build-cache-
 
      - name: Run Evaluation
-        working-directory: build
-        run: ./line_eval
+       working-directory: build
+       run: ./line_eval
       
       - name: Upload Output Log
         uses: actions/upload-artifact@v4
