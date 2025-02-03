@@ -3,7 +3,7 @@ project(test_gsl)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "-std=c++17")
-
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=x86-64 -mtune=generic")
 # Copy train.csv to the build directory
 configure_file(${CMAKE_SOURCE_DIR}/data/train.csv ${CMAKE_BINARY_DIR}/train.csv COPYONLY)
 configure_file(${CMAKE_SOURCE_DIR}/data/test.csv ${CMAKE_BINARY_DIR}/test.csv COPYONLY)
