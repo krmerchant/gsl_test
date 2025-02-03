@@ -60,7 +60,7 @@ void PrintFormattedOutput(double real_m, double real_b, double pred_m, double pr
 
 
 
-int main(char* argv[], int argc) {
+int main(int argc, char* argv[]) {
     Data trainingData  = GenerateGaussianNumbers(100,0, 5, 3, 2);
     std::unique_ptr<LineFit> fit = std::make_unique<NelderMeadLineFit>();
     auto& [x,y] = trainingData;
