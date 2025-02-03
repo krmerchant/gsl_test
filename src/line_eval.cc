@@ -72,7 +72,7 @@ int main(int argc, char* argv[]) {
     std::chrono::duration<double> elapsed_seconds = end-start;
 
     double metric =  ComputeLineResidual(line, trainingData);
-    PrintFormattedOutput(3, 2, line.m, line.b, metric, elapsed_seconds.count(), "output.txt");
+//    PrintFormattedOutput(3, 2, line.m, line.b, metric, elapsed_seconds.count(), "output.txt");
 
 
     return 0;
