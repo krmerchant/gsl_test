@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - master 
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -25,6 +25,7 @@ jobs:
       - name: Build project
         run: cmake --build build --config Release
 
+
       - name: Cache Build Artifacts
         uses: actions/cache@v3
         with:
@@ -32,16 +33,30 @@ jobs:
           key: build-cache-${{ github.run_id }}
           restore-keys: build-cache-
 
-     - name: Run Evaluation
-       working-directory: build
-       run: ./line_eval
+
+      - name: Run tests (if applicable)
+        working-directory: build
+        run: ctest --output-on-failure
+
+  generate_report:
+    runs-on: ubuntu-latest
+    needs: build 
+   
+    steps:
+      
+      - name: Restore Build Cache
+        uses: actions/cache@v3
+        with:
+          path: build/
+          key: build-cache-${{ github.run_id }}
+          restore-keys: build-cache-
+
+      - name: Run Evaluation
+        working-directory: build
+        run: ./line_eval
       
       - name: Upload Output Log
         uses: actions/upload-artifact@v4
         with:
           name: metrics-log
-          path: output.txt
-
-      - name: Run tests (if applicable)
-        working-directory: build
-        run: ctest --output-on-failure
+          path: output.txt 
