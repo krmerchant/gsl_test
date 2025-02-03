@@ -33,6 +33,15 @@ jobs:
           key: build-cache-${{ github.run_id }}
           restore-keys: build-cache-
 
+     - name: Run Evaluation
+        working-directory: build
+        run: ./line_eval
+      
+      - name: Upload Output Log
+        uses: actions/upload-artifact@v4
+        with:
+          name: metrics-log
+          path: output.txt
 
       - name: Run tests (if applicable)
         working-directory: build
