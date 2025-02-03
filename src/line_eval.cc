@@ -8,20 +8,21 @@
 #include "line_fit.hh"
 #include <iomanip>
 #include <chrono>
-
+#include <random>
 using Data =  std::tuple<std::vector<double>,std::vector<double>>;
 
-Data ReadCSV(const std::string& filename) {
-    io::CSVReader<2> in(filename); // 2 columns per row
-   
-    in.read_header(io::ignore_extra_column, "X", "Y"); // You can specify header names if needed
-    
-    std::vector<double> x, y; 
-    double col1, col2;
-    
-    while (in.read_row(col1, col2)) {
-        x.push_back(col1);
-        y.push_back(col2);
+// Function to generate random numbers from a standard normal distribution
+Data GenerateGaussianNumbers(int n, double mean, double stddev, double m, double b) {
+    std::random_device rd;  // Seed for the random number engine
+    std::mt19937 gen(rd()); // Mersenne Twister engine
+    std::normal_distribution<> norm(mean, stddev); // Standard normal distribution
+     std::uniform_real_distribution<> uniform(0, 10); // Uniform distribution
+
+    std::vector<double> x;
+    std::vector<double> y;
+    for (int i = 0; i < n; ++i) {
+        x.push_back(uniform(gen));
+        y.push_back(m*x[i] + b + norm(gen));
     }
     return std::make_tuple(x,y);
 }
@@ -60,7 +61,7 @@ void PrintFormattedOutput(double real_m, double real_b, double pred_m, double pr
 
 
 int main(char* argv[], int argc) {
-    Data trainingData  = ReadCSV("train.csv");
+    Data trainingData  = GenerateGaussianNumbers(100,0, 5, 3, 2);
     std::unique_ptr<LineFit> fit = std::make_unique<NelderMeadLineFit>();
     auto& [x,y] = trainingData;
 
