@@ -54,3 +54,9 @@ jobs:
       - name: Run Evaluation
         working-directory: build
         run: ./line_eval
+      
+      - name: Upload Output Log
+        uses: actions/upload-artifact@v3
+        with:
+         name: metrics-log
+         path: output.txt 
