@@ -25,6 +25,15 @@ jobs:
       - name: Build project
         run: cmake --build build --config Release
 
+
+      - name: Cache Build Artifacts
+        uses: actions/cache@v3
+        with:
+          path: build/
+          key: build-cache-${{ github.run_id }}
+          restore-keys: build-cache-
+
+
       - name: Run tests (if applicable)
         working-directory: build
         run: ctest --output-on-failure
@@ -34,10 +43,15 @@ jobs:
     needs: build 
    
     steps:
+      - name: Configure CMake
+        run: cmake -S . -B build
 
-     - name: Build project
-        run: cmake --build build --config Release
-
+      - name: Restore Build Cache
+        uses: actions/cache@v3
+        with:
+          path: build/
+          key: build-cache-${{ github.run_id }}
+          restore-keys: build-cache-
 
       - name: Run Evaluation
         working-directory: build
