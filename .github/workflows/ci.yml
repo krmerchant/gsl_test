@@ -43,9 +43,7 @@ jobs:
     needs: build 
    
     steps:
-      - name: Configure CMake
-        run: cmake -S . -B build
-
+      
       - name: Restore Build Cache
         uses: actions/cache@v3
         with:
